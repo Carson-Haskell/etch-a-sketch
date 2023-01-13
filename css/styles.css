@@ -8,7 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: rgba(85, 116, 146, 0.798);
+    background-color: #cb1117;
 }
 
 :root {
@@ -19,15 +19,25 @@ body {
 #header {
     display: flex;
     justify-content: center;
-    background-color: rgba(25, 45, 67, 0.63);
-    border-bottom: 2px solid black;
+    align-items: center;
 }
 
 .title {
-    font-size: 40px;
-    color: rgb(215, 215, 215);
-    font-weight: 800;
-    letter-spacing: 8px;
+    font-size: 50px;
+    color: rgba(196, 167, 1, 0.587);
+    letter-spacing: 7px;
+    font-family: brush script mt, cursive;
+    margin-top: 15px;
+}
+
+.offset {
+  font-size: 25px;
+  padding: 0 35px;
+  color: rgb(212, 180, 1);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: -2px;
 }
 
 #sketch-canvas {
@@ -36,39 +46,40 @@ body {
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     width: 900px;
     height: 600px;
-    margin: 20px auto;
-    border: 2px dotted black;
-    background-color: rgba(215, 215, 215, 0.672);
-    border-radius: 10px;
+    margin: 0 auto;
+    border: 6px solid rgba(211, 207, 207, 0.738);
+    background-color: rgb(211, 207, 207);
+    border-radius: 20px;
 }
   
 .grid-item {
     width: 100%;
-    border: 1px solid #76767630;
+    /* transition: background-color 1s; */
   }
 
   #buttons {
     display: flex;
     justify-content: center;
     gap: 50px;
-    margin-top: -10px;
+    margin-top: 30px;
   }
 
   .header-button {
     text-align: center;
     padding: 15px;
-    margin-top: 30px;
-    transition: all .5s;
+    transition: all .4s;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 2px solid rgba(0, 0, 0, 0.209);
     font-size: 14px;
-    background-color: rgba(25, 45, 67, 0.63);
+    background-color: #9824288a;
     font-weight: 600;
-    color: rgb(215, 215, 215);
+    color: rgb(212, 180, 1);
+    margin-bottom: 15px;
   }
 
   .header-button:hover {
     transform: scale(1.2);
+    border: 2px dotted rgb(211, 207, 207);
   }
 
 

@@ -7,7 +7,7 @@ const resetButton = document.getElementById('reset-grid');
 let gridSquares;
 
 // Default grid scale
-let gridScale = 16;
+let gridScale = 64;
 
 // Generates the etch-a-sketch canvas
 createCanvas(gridScale);
@@ -53,10 +53,10 @@ function createCanvas(gridSize) {
 function toggleLines() {
   gridSquares = document.querySelectorAll('.grid-item');
   gridSquares.forEach((square) => {
-    if (square.style.border === 'none') {
+    if (square.style.border === '') {
       square.style.border = '1px solid #76767630';
     } else {
-      square.style.border = 'none';
+      square.style.border = '';
     }
   });
 }
