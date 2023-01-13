@@ -12,6 +12,11 @@ let gridScale = 64;
 // Generates the etch-a-sketch canvas
 createCanvas(gridScale);
 
+// Only draw while the mouse is pressed
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
 sketchButton.addEventListener('click', () => {
   // Grid cannot exceed 100 without slowing computer
   do {
@@ -42,12 +47,7 @@ function createCanvas(gridSize) {
   }
 
   // Add sketch effect with mouse
-  gridSquares = document.querySelectorAll('.grid-item');
-  gridSquares.forEach((square) =>
-    square.addEventListener('mouseover', () => {
-      square.style.backgroundColor = 'black';
-    })
-  );
+  enableSketch();
 }
 
 function toggleLines() {
@@ -62,8 +62,19 @@ function toggleLines() {
 }
 
 function resetCanvas() {
-    gridSquares = document.querySelectorAll('.grid-item');
-    gridSquares.forEach((square) => {
-        square.style.backgroundColor = '';
-    });
+  gridSquares = document.querySelectorAll('.grid-item');
+  gridSquares.forEach((square) => {
+    square.style.backgroundColor = '';
+  });
+}
+
+function enableSketch() {
+  gridSquares = document.querySelectorAll('.grid-item');
+  gridSquares.forEach((square) =>
+    square.addEventListener('mouseover', () => {
+      if (!mouseDown) return;
+
+      square.style.backgroundColor = 'black';
+    })
+  );
 }
