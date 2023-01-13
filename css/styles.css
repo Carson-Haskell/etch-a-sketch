@@ -8,6 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    background-color: rgba(85, 116, 146, 0.798);
 }
 
 :root {
@@ -23,13 +24,12 @@ body {
     height: 600px;
     margin: 60px auto;
     border: 2px solid black;
+    background-color: rgba(215, 215, 215, 0.672);
 }
   
 .grid-item {
     width: 100%;
-    border: 1px solid #ddd;
-    text-align: center;
-    /* border: none; */
+    border: 1px solid #76767630;
   }
 
   #header {
@@ -40,9 +40,15 @@ body {
 
   .header-button {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     margin-top: 30px;
     transition: all .5s;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 14px;
+    background-color: rgba(25, 45, 67, 0.63);
+    font-weight: 600;
+    color: rgb(215, 215, 215);
   }
 
   .header-button:hover {

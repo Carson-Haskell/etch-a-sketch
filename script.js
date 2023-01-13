@@ -1,58 +1,69 @@
 const sketchCanvas = document.getElementById('sketch-canvas');
 const sketchButton = document.getElementById('sketch-scale');
 const toggleButton = document.getElementById('toggle-grid');
+const resetButton = document.getElementById('reset-grid');
+
+// Will be assigned and deleted every time a canvas is created
+let gridSquares;
+
+// Default grid scale
+let gridScale = 16;
 
 // Generates the etch-a-sketch canvas
-createCanvas(16);
+createCanvas(gridScale);
 
-// Fills each square as mouse hovers creating a drawing effect
-enableSketch();
-
-let gridScale;
 sketchButton.addEventListener('click', () => {
   // Grid cannot exceed 100 without slowing computer
   do {
     gridScale = parseInt(prompt());
-  } while (gridScale < 2 || gridScale > 100);
+  } while (gridScale < 2 || gridScale > 100 || !gridScale);
 
-  // Delete previous canvas and generate new one
-  sketchCanvas.textContent = '';
   createCanvas(gridScale);
-  enableSketch();
 });
 
 toggleButton.addEventListener('click', toggleLines);
 
+resetButton.addEventListener('click', resetCanvas);
 
 // Abstracted functions below
 
 function createCanvas(gridSize) {
+  sketchCanvas.textContent = ''; // Resets canvas every time function is called
+
   rows = gridSize;
   cols = gridSize;
+
   sketchCanvas.style.setProperty('--grid-rows', rows);
   sketchCanvas.style.setProperty('--grid-cols', cols);
+
   for (c = 0; c < rows * cols; c++) {
     let cell = document.createElement('div');
     sketchCanvas.appendChild(cell).className = 'grid-item';
   }
+
+  // Add sketch effect with mouse
+  gridSquares = document.querySelectorAll('.grid-item');
+  gridSquares.forEach((square) =>
+    square.addEventListener('mouseover', () => {
+      square.style.backgroundColor = 'green';
+    })
+  );
 }
 
 function toggleLines() {
-  const grid = document.querySelectorAll('.grid-item');
-  grid.forEach((square) => {
+  gridSquares = document.querySelectorAll('.grid-item');
+  gridSquares.forEach((square) => {
     if (square.style.border === 'none') {
-      square.style.border = '1px solid #ddd';
+      square.style.border = '1px solid #76767630';
     } else {
       square.style.border = 'none';
     }
   });
 }
 
-function enableSketch() {
-  const grid = document.querySelectorAll('.grid-item');
-  grid.forEach((square) =>
-    square.addEventListener('mouseover', () => {
-      square.style.backgroundColor = 'green';
-    })
-  );
+function resetCanvas() {
+    gridSquares = document.querySelectorAll('.grid-item');
+    gridSquares.forEach((square) => {
+        square.style.backgroundColor = '';
+    });
 }
