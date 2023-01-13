@@ -54,7 +54,7 @@ body {
   
 .grid-item {
     width: 100%;
-    /* transition: background-color 1s; */
+    transition: background-color .2s;
   }
 
   #buttons {

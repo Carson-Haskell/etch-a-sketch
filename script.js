@@ -6,6 +6,8 @@ const resetButton = document.getElementById('reset-grid');
 // Will be assigned and deleted every time a canvas is created
 let gridSquares;
 
+let gridLines = false;
+
 // Default grid scale
 let gridScale = 64;
 
@@ -46,12 +48,20 @@ function createCanvas(gridSize) {
     sketchCanvas.appendChild(cell).className = 'grid-item';
   }
 
+  gridSquares = document.querySelectorAll('.grid-item');
+
+  if (gridLines) {
+    gridSquares.forEach((square) => {
+      square.style.border = '1px solid #76767630';
+    });
+  }
+
   // Add sketch effect with mouse
   enableSketch();
 }
 
 function toggleLines() {
-  gridSquares = document.querySelectorAll('.grid-item');
+  gridLines = !gridLines;
   gridSquares.forEach((square) => {
     if (square.style.border === '') {
       square.style.border = '1px solid #76767630';
@@ -62,14 +72,12 @@ function toggleLines() {
 }
 
 function resetCanvas() {
-  gridSquares = document.querySelectorAll('.grid-item');
   gridSquares.forEach((square) => {
     square.style.backgroundColor = '';
   });
 }
 
 function enableSketch() {
-  gridSquares = document.querySelectorAll('.grid-item');
   gridSquares.forEach((square) =>
     square.addEventListener('mouseover', () => {
       if (!mouseDown) return;
