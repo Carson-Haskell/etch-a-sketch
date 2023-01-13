@@ -45,7 +45,7 @@ function createCanvas(gridSize) {
   gridSquares = document.querySelectorAll('.grid-item');
   gridSquares.forEach((square) =>
     square.addEventListener('mouseover', () => {
-      square.style.backgroundColor = 'green';
+      square.style.backgroundColor = 'black';
     })
   );
 }
