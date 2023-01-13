@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
@@ -15,7 +21,7 @@
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     width: 900px;
     height: 600px;
-    margin: 100px auto;
+    margin: 60px auto;
     border: 2px solid black;
 }
   
@@ -25,3 +31,22 @@
     text-align: center;
     /* border: none; */
   }
+
+  #header {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .header-button {
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+    transition: all .5s;
+  }
+
+  .header-button:hover {
+    transform: scale(1.2);
+  }
+
+
